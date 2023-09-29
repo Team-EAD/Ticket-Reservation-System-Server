@@ -1,3 +1,6 @@
+using Ticket_Reservation_System_Server.Models;
+using Ticket_Reservation_System_Server.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+builder.Services.Configure<DbConfiguration>(
+     builder.Configuration.GetSection("MongoDB")
+    );
+
+//resolving the CategoryService dependency here
+builder.Services.AddTransient<ITravelerService, TravelerService>();
 
 var app = builder.Build();
 
@@ -16,6 +27,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
@@ -23,3 +35,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
