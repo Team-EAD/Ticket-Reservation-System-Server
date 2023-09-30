@@ -38,7 +38,34 @@ namespace Ticket_Reservation_System_Server.Services
 
         public async Task DeleteAysnc(string id) =>
             await _travelerCollection.DeleteOneAsync(a => a.Nic == id);
+
+
+        public async Task ActivateAccountAsync(string id)
+        {
+                var filter = Builders<Traveler>.Filter.Eq(t => t.Nic, id);
+                var update = Builders<Traveler>.Update.Set(t => t.IsActive, true);
+                await _travelerCollection.UpdateOneAsync(filter, update);
+            
+        }
+
+        public async Task DeactivateAccountAsync(string id)
+        {
+           
+                var filter = Builders<Traveler>.Filter.Eq(t => t.Nic, id);
+                var update = Builders<Traveler>.Update.Set(t => t.IsActive, false);
+                await _travelerCollection.UpdateOneAsync(filter, update);
+        }
+        
+        
+
+
+
+
     }
+
+
+
+
 
     }
 

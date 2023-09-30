@@ -69,6 +69,21 @@ namespace Ticket_Reservation_System_Server.Controllers
             await _travelerService.DeleteAysnc(id);
             return Ok("deleted successfully");
         }
+
+        [HttpPost("activate/{id}")]
+        public async Task<IActionResult> ActivateAccount(string id)
+        {
+            await _travelerService.ActivateAccountAsync(id);
+            return Ok("Activated  successfully");
+        }
+
+        [HttpPost("deactivate/{id}")]
+        public async Task<IActionResult> DeactivateAccount(string id)
+        {
+            await _travelerService.DeactivateAccountAsync(id);
+            return Ok("Deactivated successfully");
+        }
+
     }
 
 

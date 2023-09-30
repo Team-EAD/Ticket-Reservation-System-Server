@@ -7,5 +7,6 @@
         public string ConnectionURI { get; set; }
         public string DatabaseName { get; set; }
         public string? TravelersCollectionName { get; set; }
+        public string? TicketReservationCollectionName { get; set; }
     }
 }
