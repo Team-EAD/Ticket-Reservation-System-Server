@@ -10,7 +10,9 @@ namespace Ticket_Reservation_System_Server.Services
         Task UpdateAsync(string id, Traveler traveler);
         Task DeleteAysnc(string id);
 
+        Task ActivateAccountAsync(String id);
 
+        Task DeactivateAccountAsync(string id);
 
     }
 }

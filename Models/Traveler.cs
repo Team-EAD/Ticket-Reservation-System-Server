@@ -27,6 +27,10 @@ namespace Ticket_Reservation_System_Server.Models
         [BsonElement("password")]
         public string Password { get; set; }
 
+        [BsonElement("isActive")]
+
+        public Boolean IsActive { get; set; }
+
 
 
 

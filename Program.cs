@@ -18,6 +18,9 @@ builder.Services.Configure<DbConfiguration>(
 //resolving the CategoryService dependency here
 builder.Services.AddTransient<ITravelerService, TravelerService>();
 
+//resolving the TicketReservationService dependency here
+builder.Services.AddTransient< ITicketReservationService,TicketReservationService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
