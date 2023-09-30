@@ -9,6 +9,9 @@ namespace Ticket_Reservation_System_Server.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
 
+        [BsonElement("referenceID")]
+        public string ReferenceID { get; set; }
+
         [BsonElement("reservationDate")]
         public DateTime ReservationDate { get; set; }
 

@@ -24,26 +24,28 @@ namespace Ticket_Reservation_System_Server.Services
         public async Task<TicketReservation> GetById(string id) =>
             await _ticketReservation.Find(a => a.Id == id).FirstOrDefaultAsync();
 
-        public async Task<bool> CreateAsync(TicketReservation ticketReservation)
+           public async Task<bool> CreateAsync(TicketReservation ticketReservation)
         {
-            var maxReservations = 4;
-            var existingReservationsCount = await _ticketReservation
-            .CountDocumentsAsync(r => r.Id == ticketReservation.Id);
+           
+                var maxReservations = 4;
+                var existingReservationsCount = await _ticketReservation
+                .CountDocumentsAsync(r => r.ReferenceID == ticketReservation.ReferenceID);
 
-            if (existingReservationsCount >= maxReservations)
-            {
-                return false; // Maximum reservations reached
-            }
-  /*
-            // Check if the reservation date is within 30 days from the booking date
-            if ((ticketReservation.ReservationDate - ticketReservation.TripDate).Days > 30)
-            {
-                return false; // Reservation date is not within 30 days
-            }
-  */
-            await _ticketReservation.InsertOneAsync(ticketReservation);
-            return true; // Reservation created successfully
+                if (existingReservationsCount >= maxReservations)
+                {
+                    return false; // Maximum reservations reached
+                }
+                /*
+                          // Check if the reservation date is within 30 days from the booking date
+                          if ((ticketReservation.ReservationDate - ticketReservation.TripDate).Days > 30)
+                          {
+                              return false; // Reservation date is not within 30 days
+                          }
+                */
+                await _ticketReservation.InsertOneAsync(ticketReservation);
+                return true; // Reservation created successfully
 
+            
         }
         public async Task UpdateAsync(string id, TicketReservation ticketReservation) =>
             await _ticketReservation

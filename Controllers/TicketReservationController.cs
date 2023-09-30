@@ -44,9 +44,18 @@ namespace Ticket_Reservation_System_Server.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(TicketReservation ticketReservation)
         {
-            await _ticketReservationService.CreateAsync(ticketReservation);
-            return Ok("created successfully");
+            var success = await _ticketReservationService.CreateAsync(ticketReservation);
+
+            if (success)
+            {
+                return Ok("Reservation created successfully");
+            }
+            else
+            {
+                return BadRequest("Maximum reservations reached");
+            }
         }
+    
 
         // PUT api/TicketReservation/{id}
         [HttpPut("{id}")]
