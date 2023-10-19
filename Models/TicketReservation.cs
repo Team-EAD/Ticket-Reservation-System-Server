@@ -12,11 +12,14 @@ namespace Ticket_Reservation_System_Server.Models
         [BsonElement("referenceID")]
         public string ReferenceID { get; set; }
 
+        [BsonElement("time")]
+        public DateTime Time { get; set; }
+
         [BsonElement("reservationDate")]
         public DateTime ReservationDate { get; set; }
 
-        [BsonElement("tripDate")]
-        public DateTime TripDate { get; set; }
+        [BsonElement("bookingDate")]
+        public DateTime BookingDate { get; set; }
 
         [BsonElement("numberOfTicktes")]
         public int NumberOfTickets { get; set; }
@@ -27,8 +30,6 @@ namespace Ticket_Reservation_System_Server.Models
         [BsonElement("destination")]
         public string Destination { get; set; }
 
-        [BsonElement("price")]
-        public string Price { get; set; }
 
     }
 }

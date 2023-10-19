@@ -57,16 +57,31 @@ namespace Ticket_Reservation_System_Server.Controllers
         }
     
 
-        // PUT api/TicketReservation/{id}
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(string id, [FromBody] TicketReservation newTicketReservation)
+       [HttpPut("{id}")]
+    public async Task<IActionResult> Put(string id, [FromBody] TicketReservation newTicketReservation)
+    {
+        var reservation = await _ticketReservationService.GetById(id);
+        if (reservation == null)
+            return NotFound();
+
+        // Calculate the number of days remaining until the reservation date
+        var today = DateTime.Now.Date;
+        var reservationDate = reservation.ReservationDate.Date; // Assuming ReservationDate is a DateTime property
+
+        var daysRemaining = (reservationDate - today).TotalDays;
+
+        // Check if there are at least 5 days remaining
+        if (daysRemaining >= 5)
         {
-            var reservation = await _ticketReservationService.GetById(id);
-            if (reservation == null)
-                return NotFound();
             await _ticketReservationService.UpdateAsync(id, newTicketReservation);
-            return Ok("updated successfully");
+            return Ok("Reservation updated successfully");
         }
+        else
+        {
+            return BadRequest("Reservation can only be updated at least 5 days before the reservation date.");
+        }
+    }
+
 
         // DELETE api/TicketReservation/{id}
         [HttpDelete("{id}")]
@@ -75,8 +90,22 @@ namespace Ticket_Reservation_System_Server.Controllers
             var reservation = await _ticketReservationService.GetById(id);
             if (reservation == null)
                 return NotFound();
-            await _ticketReservationService.DeleteAysnc(id);
-            return Ok("deleted successfully");
+
+            // Calculate the difference in days between the current date and the reservation date
+            var currentDate = DateTime.Now.Date; // Get the current date (without time)
+            var reservationDate = reservation.ReservationDate.Date; // Get the reservation date (without time)
+            var daysUntilReservation = (int)(reservationDate - currentDate).TotalDays;
+
+            if (daysUntilReservation >= 5)
+            {
+                // Allow the reservation to be canceled
+                await _ticketReservationService.DeleteAysnc(id);
+                return Ok("Reservation canceled successfully");
+            }
+            else
+            {
+                return BadRequest("Reservation cannot be canceled as it is within 5 days of the reservation date.");
+            }
         }
 
 

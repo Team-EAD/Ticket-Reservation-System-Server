@@ -24,8 +24,15 @@ namespace Ticket_Reservation_System_Server.Models
         [BsonElement("email")]
         public string Email { get; set; }
 
-        [BsonElement("password")]
-        public string Password { get; set; }
+        [BsonElement("dob")]
+        public string Dob { get; set; }
+
+        [BsonElement("passwords")]
+       
+        public string Passwords { get; set; }
+
+        [BsonElement("image")]
+        public string Image { get; set; }
 
         [BsonElement("isActive")]
 
