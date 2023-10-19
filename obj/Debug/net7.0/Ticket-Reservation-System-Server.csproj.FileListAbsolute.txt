@@ -44,3 +44,12 @@ E:\4th year\EAD\Project\Ticket-Reservation-System-Server\obj\Debug\net7.0\refint
 E:\4th year\EAD\Project\Ticket-Reservation-System-Server\obj\Debug\net7.0\Ticket-Reservation-System-Server.pdb
 E:\4th year\EAD\Project\Ticket-Reservation-System-Server\obj\Debug\net7.0\Ticket-Reservation-System-Server.genruntimeconfig.cache
 E:\4th year\EAD\Project\Ticket-Reservation-System-Server\obj\Debug\net7.0\ref\Ticket-Reservation-System-Server.dll
+E:\4th year\EAD\Project\Ticket-Reservation-System-Server\bin\Debug\net7.0\IdentityModel.dll
+E:\4th year\EAD\Project\Ticket-Reservation-System-Server\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\4th year\EAD\Project\Ticket-Reservation-System-Server\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+E:\4th year\EAD\Project\Ticket-Reservation-System-Server\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\4th year\EAD\Project\Ticket-Reservation-System-Server\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+E:\4th year\EAD\Project\Ticket-Reservation-System-Server\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+E:\4th year\EAD\Project\Ticket-Reservation-System-Server\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\4th year\EAD\Project\Ticket-Reservation-System-Server\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+E:\4th year\EAD\Project\Ticket-Reservation-System-Server\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

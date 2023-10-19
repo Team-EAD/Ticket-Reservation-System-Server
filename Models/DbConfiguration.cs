@@ -8,5 +8,10 @@
         public string DatabaseName { get; set; }
         public string? TravelersCollectionName { get; set; }
         public string? TicketReservationCollectionName { get; set; }
+
+        public string? UserCollectionName { get; set; }
+
+        public string? TrainScheduleCollectionName { get; set; }
+
     }
 }
