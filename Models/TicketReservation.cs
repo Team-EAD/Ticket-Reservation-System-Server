@@ -15,6 +15,12 @@ namespace Ticket_Reservation_System_Server.Models
         [BsonElement("time")]
         public DateTime Time { get; set; }
 
+        [BsonElement("reservetrainName")]
+        public string ReservetrainName { get; set; }
+
+        [BsonElement("reservetrainID")]
+        public string ReservetrainID { get; set; }
+
         [BsonElement("reservationDate")]
         public DateTime ReservationDate { get; set; }
 
@@ -29,6 +35,8 @@ namespace Ticket_Reservation_System_Server.Models
 
         [BsonElement("destination")]
         public string Destination { get; set; }
+
+       
 
 
     }
