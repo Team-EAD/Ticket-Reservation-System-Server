@@ -27,6 +27,9 @@ namespace Ticket_Reservation_System_Server.Services
         public async Task<TrainSchedule> GetById(string id) =>
             await _trainscheduleCollection.Find(a => a.Id == id).FirstOrDefaultAsync();
 
+
+
+
         public async Task CreateAsync(TrainSchedule trainschedule) =>
             await _trainscheduleCollection.InsertOneAsync(trainschedule);
 
@@ -44,12 +47,19 @@ namespace Ticket_Reservation_System_Server.Services
         public async Task DeleteAysnc(string id) =>
             await _trainscheduleCollection.DeleteOneAsync(a => a.Id == id);
 
+        public async Task<IEnumerable<TrainSchedule>> GetByReservation(string depature, string destination) =>
+        
+            await _trainscheduleCollection.Find(a => a.Origin == depature && a.Destination == destination).ToListAsync();
 
-
-
-
-
-
-
+        public async Task ReserveAsync(string id)
+        {
+            var filter = Builders<TrainSchedule>.Filter.Eq(t => t.Id, id);
+            var update = Builders<TrainSchedule>.Update.Set(t => t.reserve, true);
+            await _trainscheduleCollection.UpdateOneAsync(filter, update);
+        }
     }
+
+    
+
+
 }

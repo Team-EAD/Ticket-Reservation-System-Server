@@ -30,7 +30,7 @@ namespace Ticket_Reservation_System_Server.Models
 
         public Boolean IsActive { get; set; }
 
-
+        public Boolean reserve { get; set; }
 
 
 
