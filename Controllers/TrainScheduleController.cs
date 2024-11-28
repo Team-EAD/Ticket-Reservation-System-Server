@@ -72,6 +72,25 @@ namespace Ticket_Reservation_System_Server.Controllers
             return Ok("deleted successfully");
         }
 
+        [HttpGet("{departure}/{destination}")]
+        public async Task<IActionResult> Get(string departure, string destination)
+        {
+            var schedule = await _trainScheduleService.GetByReservation(departure, destination);
+
+            if (schedule == null)
+            {
+                return NotFound("No train schedule found for the given departure and destination.");
+            }
+
+            return Ok(schedule);
+        }
+
+        [HttpPost("reserve/{id}")]
+        public async Task<IActionResult> ActivateAccount(string id)
+        {
+            await _trainScheduleService.ReserveAsync(id);
+            return Ok("Train Reserved");
+        }
 
 
 
